@@ -81,7 +81,7 @@ namespace outlookaddin
             AppObj = Application;
 
             settings = new Settings();
-            settings.
+            
             
             this.Application.Inspectors.NewInspector += new Outlook.InspectorsEvents_NewInspectorEventHandler(OutlookHelperTool.InspectorWrapper);
 
