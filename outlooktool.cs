@@ -43,6 +43,7 @@ namespace outlookaddin
                 return;
             }
             getMailItem().Subject = subjectprefix + getSubject();
+            getMailItem().Save();
         }
         public static void cutCryptedSubject()
         {
@@ -52,6 +53,7 @@ namespace outlookaddin
             }
             String tempSubject = getMailItem().Subject;
             getMailItem().Subject = tempSubject.Substring(subjectprefix.Length);
+            getMailItem().Save();
         }
 
         public static void cutCryptedSubject(MailItem mailitem)
@@ -236,12 +238,14 @@ namespace outlookaddin
             MailItem mailitem = getMailItem();
             mailitem.BodyFormat = Microsoft.Office.Interop.Outlook.OlBodyFormat.olFormatHTML;
             mailitem.HTMLBody = text;
+            getMailItem().Save();
         }
 
         public static void setMailText(MailItem mailitem, String text)
         {
             mailitem.BodyFormat = Microsoft.Office.Interop.Outlook.OlBodyFormat.olFormatHTML;
             mailitem.HTMLBody = text;
+            getMailItem().Save();
         }
 
         private static String prepareString(String encrpytedString, String initvector)
@@ -258,5 +262,17 @@ namespace outlookaddin
             return formatedString;
         }
 
+
+
+        public static void saveMail()
+        {
+            getMailItem().Save();
+        }
+
+
+        public static void saveMail(MailItem mailitem)
+        {
+            mailitem.Save();
+        }
     }
 }

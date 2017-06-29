@@ -56,6 +56,7 @@ namespace outlookaddin
             buttonPreview.Enabled = false;
             OutlookHelperTool.setMailText(mailitem,tempMessage);
             OutlookHelperTool.cutCryptedSubject(mailitem);
+            mailitem.Save();
             this.Close();
 
         }
