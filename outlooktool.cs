@@ -166,7 +166,9 @@ namespace outlookaddin
         private static void mailItem_Read()
         {
             MailItem mailitem = getMailItem();
-            if (mailitem.Subject.Contains(subjectprefix) && !mailitem.Subject.StartsWith("FW: ") && !mailitem.Subject.StartsWith("AW: "))
+            if (mailitem.Subject.Contains(subjectprefix) && !mailitem.Subject.StartsWith("FW: ") && !mailitem.Subject.StartsWith("AW: ") && 
+                (mailitem.Body.Contains(TagEncryptedClose) && mailitem.Body.Contains(TagEncryptedOpen) && mailitem.Body.Contains(TagInitVectorClose) && mailitem.Body.Contains(TagInitVectorOpen)) 
+                )
                 {
                 DecryptForm decryptform = new DecryptForm(mailitem);
             }
