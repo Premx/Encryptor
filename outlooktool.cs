@@ -38,10 +38,18 @@ namespace outlookaddin
 
         public static void setCryptedSubject()
         {
+            if (getSubject().Contains(subjectprefix))
+            {
+                return;
+            }
             getMailItem().Subject = subjectprefix + getSubject();
         }
         public static void cutCryptedSubject()
         {
+            if (getSubject().Contains(subjectprefix))
+            {
+                return;
+            }
             String tempSubject = getMailItem().Subject;
             getMailItem().Subject = tempSubject.Substring(subjectprefix.Length);
         }

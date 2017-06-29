@@ -76,6 +76,7 @@ namespace outlookaddin
             {
                 OutlookHelperTool.cutCryptedSubject();
             }
+            this.Close();
         }
 
         private void buttonPreview_Click(object sender, EventArgs e)
